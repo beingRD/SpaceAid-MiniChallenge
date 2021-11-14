@@ -16,7 +16,7 @@ struct CategoryCard: View {
     let cardWidth: CGFloat
     let cardHeight: CGFloat
     
-    init(index: Int, title: String, spacing: CGFloat = 24, widthOfHiddenCards: CGFloat = 24, cardHeight: CGFloat) {
+    init(index: Int, title: String, spacing: CGFloat = 16, widthOfHiddenCards: CGFloat = 16, cardHeight: CGFloat) {
         self.index = index
         self.title = title
         self.cardWidth = UIScreen.main.bounds.width - (widthOfHiddenCards * 2) - (spacing * 2)

@@ -16,7 +16,7 @@ struct Carousel : View {
     let totalSpacing: CGFloat
     let cardWidth: CGFloat
     
-    init(numberOfItems: Int, spacing: CGFloat = 24, widthOfHiddenCards: CGFloat = 24) {
+    init(numberOfItems: Int, spacing: CGFloat = 16, widthOfHiddenCards: CGFloat = 16) {
         self.numberOfItems = numberOfItems - 1
         self.spacing = spacing
         self.widthOfHiddenCards = widthOfHiddenCards
@@ -42,7 +42,7 @@ struct Carousel : View {
         
         return HStack(alignment: .center, spacing: spacing) {
             ForEach(0..<categories.count) { index in
-                CategoryCard(index: index, title: categories[index], cardHeight: UIScreen.main.bounds.height * 0.5)
+                CategoryCard(index: index, title: categories[index], cardHeight: UIScreen.main.bounds.height * 0.55)
             }
         }
         .offset(x: CGFloat(offset), y: 0)
