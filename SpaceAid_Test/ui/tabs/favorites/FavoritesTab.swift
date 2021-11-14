@@ -9,10 +9,18 @@ import SwiftUI
 
 struct FavoritesTab: View {
     var body: some View {
-        List {
-            ForEach(places, id: \.self.id) { place in
-                if place.isFavorite {
-                    PlaceListItem(place: place)
+        if places.filter({ place in
+            place.isFavorite
+        }).count == 0 {
+            Text("Click the \(Image(systemName: "heart")) to add a place to the favorites")
+                .font(.headline)
+                .foregroundColor(.gray)
+        } else {
+            List {
+                ForEach(places, id: \.self.id) { place in
+                    if place.isFavorite {
+                        PlaceListItem(place: place)
+                    }
                 }
             }
         }
