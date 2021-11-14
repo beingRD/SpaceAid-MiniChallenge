@@ -20,7 +20,13 @@ struct ExploreTab: View {
     
     var body: some View {
         if isSearching {
-            PlacesList(searchedText: searchedText)
+            List {
+                ForEach(places, id: \.self.id) { place in
+                    if place.name.starts(with: searchedText) {
+                        PlaceListItem(place: place)
+                    }
+                }
+            }
         } else {
             Carousel(numberOfItems: categories.count)
                 .environmentObject(UIStateModel())

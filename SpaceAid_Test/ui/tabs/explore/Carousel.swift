@@ -42,7 +42,7 @@ struct Carousel : View {
         
         return HStack(alignment: .center, spacing: spacing) {
             ForEach(0..<categories.count) { index in
-                CategoryCard(index: index, title: categories[index], cardHeight: UIScreen.main.bounds.height * 0.55)
+                CategoryCard(index: index, cardHeight: UIScreen.main.bounds.height * 0.55)
             }
         }
         .offset(x: CGFloat(offset), y: 0)

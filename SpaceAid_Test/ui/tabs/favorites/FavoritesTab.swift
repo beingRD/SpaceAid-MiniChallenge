@@ -9,6 +9,12 @@ import SwiftUI
 
 struct FavoritesTab: View {
     var body: some View {
-        Text("To-Do")
+        List {
+            ForEach(places, id: \.self.id) { place in
+                if place.isFavorite {
+                    PlaceListItem(place: place)
+                }
+            }
+        }
     }
 }

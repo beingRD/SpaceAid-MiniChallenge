@@ -17,7 +17,7 @@
 		8AD17AA227368961000D2427 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD17AA127368961000D2427 /* Data.swift */; };
 		8ADAEC0F273D2A7100B0E62C /* CategoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAEC0E273D2A7100B0E62C /* CategoryCard.swift */; };
 		8ADAEC11273D2AB000B0E62C /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAEC10273D2AB000B0E62C /* Carousel.swift */; };
-		8ADAEC13273D2B0900B0E62C /* PlacesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAEC12273D2B0900B0E62C /* PlacesList.swift */; };
+		8ADAEC13273D2B0900B0E62C /* PlaceListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADAEC12273D2B0900B0E62C /* PlaceListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		8AD17AA127368961000D2427 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8ADAEC0E273D2A7100B0E62C /* CategoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCard.swift; sourceTree = "<group>"; };
 		8ADAEC10273D2AB000B0E62C /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
-		8ADAEC12273D2B0900B0E62C /* PlacesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesList.swift; sourceTree = "<group>"; };
+		8ADAEC12273D2B0900B0E62C /* PlaceListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 			children = (
 				8A086B78273FF45500578971 /* tabs */,
 				8A4D2B0F273E82D1008FB93C /* PlaceDetails.swift */,
-				8ADAEC12273D2B0900B0E62C /* PlacesList.swift */,
+				8ADAEC12273D2B0900B0E62C /* PlaceListItem.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -206,7 +206,7 @@
 				8ADAEC11273D2AB000B0E62C /* Carousel.swift in Sources */,
 				8AD17A8D273682FD000D2427 /* SpaceAid_TestApp.swift in Sources */,
 				8AD17AA227368961000D2427 /* Data.swift in Sources */,
-				8ADAEC13273D2B0900B0E62C /* PlacesList.swift in Sources */,
+				8ADAEC13273D2B0900B0E62C /* PlaceListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

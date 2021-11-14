@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PlaceDetails: View {
-    var place: Place
     @State var favorite: Bool
+    
+    var place: Place
     
     init(place: Place) {
         self.place = place
