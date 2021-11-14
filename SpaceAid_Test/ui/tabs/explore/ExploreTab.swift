@@ -18,11 +18,6 @@ struct ExploreTab: View {
             PlacesList(searchedText: searchedText)
         } else {
             Carousel(numberOfItems: categories.count)
-            {
-                ForEach(0..<categories.count) { index in
-                    CategoryCard(index: index, title: categories[index], cardHeight: UIScreen.main.bounds.height * 0.5)
-                }
-            }
             .environmentObject(UIState)
         }
     }

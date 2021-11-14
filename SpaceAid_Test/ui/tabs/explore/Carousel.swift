@@ -7,20 +7,16 @@
 
 import SwiftUI
 
-struct Carousel<Items : View> : View {
-    let items: Items
+struct Carousel : View {
+    @EnvironmentObject var UIState: UIStateModel
+    
     let numberOfItems: Int
     let spacing: CGFloat
     let widthOfHiddenCards: CGFloat
     let totalSpacing: CGFloat
     let cardWidth: CGFloat
     
-    @GestureState var isDetectingLongPress = false
-    
-    @EnvironmentObject var UIState: UIStateModel
-    
-    init(numberOfItems: Int, spacing: CGFloat = 24, widthOfHiddenCards: CGFloat = 24, @ViewBuilder _ items: () -> Items) {
-        self.items = items()
+    init(numberOfItems: Int, spacing: CGFloat = 24, widthOfHiddenCards: CGFloat = 24) {
         self.numberOfItems = numberOfItems - 1
         self.spacing = spacing
         self.widthOfHiddenCards = widthOfHiddenCards
@@ -45,7 +41,9 @@ struct Carousel<Items : View> : View {
         }
         
         return HStack(alignment: .center, spacing: spacing) {
-            items
+            ForEach(0..<categories.count) { index in
+                CategoryCard(index: index, title: categories[index], cardHeight: UIScreen.main.bounds.height * 0.5)
+            }
         }
         .offset(x: CGFloat(offset), y: 0)
         .highPriorityGesture(DragGesture().onChanged { value in
