@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class Place {
+    static let userDefaults: UserDefaults = UserDefaults.standard
     static var itemsCount = 0
     
     let id: Int
@@ -34,10 +35,16 @@ class Place {
         self.rating = "4.6"
         self.transport = "line 1"
         self.map = map
-        self.isFavorite = false
+        self.isFavorite = Place.userDefaults.bool(forKey: name)
     }
     
     func favorite() {
+        if Place.userDefaults.bool(forKey: name) {
+            Place.userDefaults.removeObject(forKey: name)
+        } else {
+            Place.userDefaults.set(true, forKey: name)
+        }
+        
         isFavorite = !isFavorite
     }
 }
