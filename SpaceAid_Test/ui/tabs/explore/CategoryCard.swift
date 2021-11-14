@@ -36,8 +36,9 @@ struct CategoryCard: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 16)
             }
-            .shadow(radius: 8)
-            .animation(.spring(), value: UIState.screenDrag)
-        }.buttonStyle(PlainButtonStyle())
+        }
+        .buttonStyle(PlainButtonStyle())
+        .shadow(radius: 8)
+        .animation(.spring(), value: UIState.screenDrag)
     }
 }

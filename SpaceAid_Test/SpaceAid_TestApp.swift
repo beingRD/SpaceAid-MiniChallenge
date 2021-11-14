@@ -7,16 +7,9 @@
 
 import SwiftUI
 
-public class UIStateModel: ObservableObject
-{
-    @Published var activeCard: Int = 0
-    @Published var screenDrag: Float = 0.0
-}
-
 @main
 struct SpaceAid_TestApp: App {
     @State var searchedText: String = ""
-    @State var isPresented: Bool = true
     @State var selectedTab: Int = 1
     
     var body: some Scene {
