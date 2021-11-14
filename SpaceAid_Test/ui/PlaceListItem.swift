@@ -23,7 +23,7 @@ struct PlaceListItem: View {
                         .font(.system(size: 22, weight: .bold))
                     Text(place.description)
                         .font(.system(size: 14, weight: .regular))
-                        .foregroundColor(.black.opacity(0.6))
+                        .foregroundColor(.gray)
                         .lineLimit(4)
                 }
             }
