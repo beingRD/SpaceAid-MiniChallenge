@@ -1,7 +1,8 @@
-# SpaceAid-MiniChallenge
+# SpaceAidExplorer
+![](Assests/ExplorerIcon.png)
 
-Team memebers:
-- Nicolas Mariniello
-- Salvatore Gallo
-- Rishabh Dev
-- Raffaele Colantonio
+An app made for students who are not from Naples to explore places in and near Naples.
+Made with love in Naples!
+
+## Team Members
+Nicolas Mariniello, Rishabh Dev, Salvatore Gallo and Raffaele Colantonio.
