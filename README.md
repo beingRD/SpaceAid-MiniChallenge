@@ -1,4 +1,4 @@
-# Explorer by SpaceAid
+# SpaceAidExplorer
 ![](Assests/ExplorerIcon.png)
 
 An app made for students who are not from Naples to explore places in and near Naples.
