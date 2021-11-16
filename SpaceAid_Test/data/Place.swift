@@ -5,10 +5,9 @@
 //  Created by Nicolas Mariniello on 06/11/21.
 //
 
-import Foundation
 import SwiftUI
 
-class Place {
+class Place : ObservableObject {
     static let userDefaults: UserDefaults = UserDefaults.standard
     static var itemsCount = 0
     
@@ -20,12 +19,10 @@ class Place {
     let distance: String
     let rating: String
     let transport: String
-    var map: String
-    var isFavorite: Bool
+    let map: String
+    @Published var isFavorite: Bool
     
     init(name: String, description: String, address: String, category: String, map: String){
-        Place.itemsCount += 1
-        
         self.id = Place.itemsCount
         self.name = name
         self.description = description
@@ -36,6 +33,8 @@ class Place {
         self.transport = "line 1"
         self.map = map
         self.isFavorite = Place.userDefaults.bool(forKey: name)
+        
+        Place.itemsCount += 1
     }
     
     func favorite() {

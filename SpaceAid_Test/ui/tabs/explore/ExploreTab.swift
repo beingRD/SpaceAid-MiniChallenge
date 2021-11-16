@@ -16,20 +16,24 @@ public class UIStateModel: ObservableObject
 struct ExploreTab: View {
     @Environment(\.isSearching) var isSearching
     
+    @EnvironmentObject var places: ObservablePlaces
+    
+    var UIState: UIStateModel = UIStateModel()
     var searchedText: String
     
     var body: some View {
         if isSearching {
             List {
-                ForEach(places, id: \.self.id) { place in
+                ForEach(places.places, id: \.self.id) { place in
                     if place.name.starts(with: searchedText) {
-                        PlaceListItem(place: place)
+                        PlaceListItem()
+                            .environmentObject(place)
                     }
                 }
             }
         } else {
             Carousel(numberOfItems: categories.count)
-                .environmentObject(UIStateModel())
+                .environmentObject(UIState)
         }
     }
 }

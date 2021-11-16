@@ -12,6 +12,18 @@ struct SpaceAid_TestApp: App {
     @State var searchedText: String = ""
     @State var selectedTab: Int = 1
     
+    var places: ObservablePlaces = ObservablePlaces()
+    
+    func getNavigationTitle() -> String {
+        switch selectedTab {
+            case 1: return "Explore"
+            case 2: return "Favorites"
+            case 3: return "About Us"
+        default:
+            return ""
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -26,9 +38,15 @@ struct SpaceAid_TestApp: App {
                             Label("Favorites", systemImage: "heart.fill")
                         }
                         .tag(2)
+                    AboutUsTab()
+                        .tabItem {
+                            Label("About Us", systemImage: "info.circle.fill")
+                        }
+                        .tag(3)
                 }
-                .navigationTitle(selectedTab == 1 ? "Explore" : "Favorites")
+                .navigationTitle(getNavigationTitle())
             }
+            .environmentObject(places)
             .preferredColorScheme(.light)
             .searchable(text: $searchedText, prompt: "Looking for something?")
         }

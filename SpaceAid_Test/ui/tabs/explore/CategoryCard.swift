@@ -10,22 +10,24 @@ import SwiftUI
 struct CategoryCard: View {
     @Environment(\.isSearching) var isSearching
     @EnvironmentObject var UIState: UIStateModel
+    @EnvironmentObject var places: ObservablePlaces
     
     let index: Int
     let cardWidth: CGFloat
     let cardHeight: CGFloat
     
-    init(index: Int, spacing: CGFloat = 16, widthOfHiddenCards: CGFloat = 16, cardHeight: CGFloat) {
+    init(index: Int, cardWidth: CGFloat, cardHeight: CGFloat) {
         self.index = index
-        self.cardWidth = UIScreen.main.bounds.width - (widthOfHiddenCards * 2) - (spacing * 2)
+        self.cardWidth = cardWidth
         self.cardHeight = cardHeight
     }
     
     var body: some View {
         NavigationLink(destination: List {
-            ForEach(places, id: \.self.id) { place in
+            ForEach(places.places, id: \.self.id) { place in
                 if place.category == categories[index].lowercased() {
-                    PlaceListItem(place: place)
+                    PlaceListItem()
+                        .environmentObject(place)
                 }
             }
         }.navigationTitle(categories[index]).navigationBarTitleDisplayMode(.inline)) {
@@ -40,10 +42,9 @@ struct CategoryCard: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 12)
             }
+            .shadow(radius: 4)
+            .animation(.spring(), value: UIState.screenDrag)
+            .animation(.spring(), value: UIState.activeCard)
         }
-        .buttonStyle(PlainButtonStyle())
-        .shadow(radius: 4)
-        .animation(.spring(), value: UIState.screenDrag)
-        .animation(.spring(), value: UIState.activeCard)
     }
 }
