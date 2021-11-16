@@ -47,6 +47,7 @@ struct SpaceAid_TestApp: App {
                 .navigationTitle(getNavigationTitle())
             }
             .environmentObject(places)
+            .environmentObject(ObservableFavoritePlaces(places: places.places))
             .preferredColorScheme(.light)
             .searchable(text: $searchedText, prompt: "Looking for something?")
         }

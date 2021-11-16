@@ -10,6 +10,7 @@ import SwiftUI
 struct PlaceDetails: View {
     @EnvironmentObject var place: Place
     @EnvironmentObject var places: ObservablePlaces
+    @EnvironmentObject var favoritePlaces: ObservableFavoritePlaces
     
     var body: some View {
         ScrollView {
@@ -110,11 +111,10 @@ struct PlaceDetails: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button(action: {
                 if place.isFavorite {
-                    places.removeFavorite(place: place)
+                    favoritePlaces.removeFavorite(place: place)
                 } else {
-                    places.addFavorite(place: place)
+                    favoritePlaces.addFavorite(place: place)
                 }
-                place.favorite()
             }) {
                 Image(systemName: place.isFavorite ? "heart.fill" : "heart")
             })
