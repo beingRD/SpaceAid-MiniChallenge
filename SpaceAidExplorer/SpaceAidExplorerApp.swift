@@ -13,6 +13,7 @@ struct SpaceAid_TestApp: App {
     @State var selectedTab: Int = 1
     
     var places: ObservablePlaces = ObservablePlaces()
+    @State var favorites: [Place]
     
     func getNavigationTitle() -> String {
         switch selectedTab {
@@ -24,6 +25,10 @@ struct SpaceAid_TestApp: App {
         }
     }
     
+    init() {
+        favorites = places.places.filter { $0.isFavorite }
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
@@ -33,11 +38,14 @@ struct SpaceAid_TestApp: App {
                             Label("Explore", systemImage: "house")
                         }
                         .tag(1)
-                    FavoritesTab()
+                    FavoritesTab(favorites: favorites)
                         .tabItem {
                             Label("Favorites", systemImage: "heart.fill")
                         }
                         .tag(2)
+                        .onAppear {
+                            favorites = places.places.filter { $0.isFavorite }
+                        }
                     AboutUsTab()
                         .tabItem {
                             Label("About Us", systemImage: "info.circle.fill")
@@ -47,7 +55,6 @@ struct SpaceAid_TestApp: App {
                 .navigationTitle(getNavigationTitle())
             }
             .environmentObject(places)
-            .environmentObject(ObservableFavoritePlaces(places: places.places))
             .preferredColorScheme(.light)
             .searchable(text: $searchedText, prompt: "Looking for something?")
         }

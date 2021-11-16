@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class Place : ObservableObject {
+class Place : ObservableObject, Identifiable {
     static let userDefaults: UserDefaults = UserDefaults.standard
     static var itemsCount = 0
     

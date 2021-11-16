@@ -8,19 +8,18 @@
 import SwiftUI
 
 struct FavoritesTab: View {
-    @EnvironmentObject var places: ObservablePlaces
-    @EnvironmentObject var favoritePlaces: ObservableFavoritePlaces
+    var favorites: [Place]
     
     var body: some View {
-        if favoritePlaces.favoritePlaces.isEmpty {
+        if favorites.isEmpty {
             Text("Click the \(Image(systemName: "heart")) to add a place to the favorites")
                 .font(.headline)
                 .foregroundColor(.gray)
         } else {
             List {
-                ForEach(favoritePlaces.favoritePlaces, id: \.self.id) { place in
-                        PlaceListItem()
-                            .environmentObject(place)
+                ForEach(favorites) { place in
+                    PlaceListItem()
+                        .environmentObject(place)
                 }
             }
         }
