@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public class UIStateModel: ObservableObject
+class UIStateModel: ObservableObject
 {
     @Published var activeCard: Int = 0
     @Published var screenDrag: Float = 0.0
@@ -22,7 +22,7 @@ struct ExploreTab: View {
     var body: some View {
         if isSearching {
             List {
-                ForEach(places, id: \.self.id) { place in
+                ForEach(places) { place in
                     if place.name.starts(with: searchedText) {
                         PlaceListItem(place: place)
                     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct SpaceAid_TestApp: App {
+struct ExplorerApp: App {
     @State var searchedText: String = ""
     @State var selectedTab: Int = 1
     @State var favorites: [Place] = places.filter { $0.isFavorite }

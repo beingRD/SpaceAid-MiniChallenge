@@ -38,7 +38,7 @@ class Place: ObservableObject, Identifiable {
     }
     
     func favorite() {
-        if Place.userDefaults.bool(forKey: name) {
+        if isFavorite {
             Place.userDefaults.removeObject(forKey: name)
         } else {
             Place.userDefaults.set(true, forKey: name)
