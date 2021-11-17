@@ -1,8 +1,8 @@
 //
 //  AboutUsTab.swift
-//  SpaceAid_Test
+//  SpaceAidExplorer
 //
-//  Created by Nicolas Mariniello on 15/11/21.
+//  Created by SpaceAid Group on 15/11/21.
 //
 
 import SwiftUI

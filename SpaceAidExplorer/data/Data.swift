@@ -1,8 +1,8 @@
 //
 //  Places.swift
-//  SpaceAid_Test
+//  SpaceAidExplorer
 //
-//  Created by Nicolas Mariniello on 06/11/21.
+//  Created by SpaceAid Group on 06/11/21.
 //
 
 import Foundation

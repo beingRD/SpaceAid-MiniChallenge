@@ -1,8 +1,8 @@
 //
 //  SwiftUIView.swift
-//  SpaceAid_Test
+//  SpaceAidExplorer
 //
-//  Created by Nicolas Mariniello & Colantonio Raffaele on 09/11/21.
+//  Created by SpaceAid Group on 09/11/21.
 //
 
 import SwiftUI

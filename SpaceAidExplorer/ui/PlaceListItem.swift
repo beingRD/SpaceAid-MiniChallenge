@@ -1,8 +1,8 @@
 //
 //  PlacesList.swift
-//  SpaceAid_Test
+//  SpaceAidExplorer
 //
-//  Created by Nicolas Mariniello & Raffaele Colantonio on 11/11/21.
+//  Created by SpaceAid Group on 11/11/21.
 //
 
 import SwiftUI
