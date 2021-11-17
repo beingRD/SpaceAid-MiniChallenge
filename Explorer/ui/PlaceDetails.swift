@@ -22,11 +22,8 @@ struct PlaceDetails: View {
                 HStack{
                     VStack{
                         VStack(alignment: .center) {
-                            HStack {
-                                Image(systemName: "star.fill")
-                                Text(place.rating)
-                                    .font(.headline)
-                            }
+                            Text("\(Image(systemName: "star.fill")) \(place.rating)")
+                                .font(.headline)
                             Text("Very good")
                                 .font(.system(size: 12, weight: .regular))
                         }
@@ -42,11 +39,8 @@ struct PlaceDetails: View {
                     Spacer()
                     VStack {
                         VStack(alignment: .center) {
-                            HStack {
-                                Image(systemName: "location.fill")
-                                Text("\(place.distance) km")
-                                    .font(.headline)
-                            }
+                            Text("\(Image(systemName: "location.fill")) \(place.distance) km")
+                                .font(.headline)
                             Text("From the Academy")
                                 .font(.system(size: 12, weight: .regular))
                         }
@@ -62,11 +56,8 @@ struct PlaceDetails: View {
                     Spacer()
                     VStack{
                         VStack {
-                            HStack {
-                                Image(systemName: "tram")
-                                Text("Line 1")
-                                    .font(.headline)
-                            }
+                            Text("\(Image(systemName: "tram.fill")) Line 1")
+                                .font(.headline)
                             Text("Toledo")
                                 .font(.system(size: 12, weight: .regular))
                         }
