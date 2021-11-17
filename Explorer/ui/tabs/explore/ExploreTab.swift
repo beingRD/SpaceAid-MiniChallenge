@@ -24,8 +24,7 @@ struct ExploreTab: View {
             List {
                 ForEach(places, id: \.self.id) { place in
                     if place.name.starts(with: searchedText) {
-                        PlaceListItem()
-                            .environmentObject(place)
+                        PlaceListItem(place: place)
                     }
                 }
             }

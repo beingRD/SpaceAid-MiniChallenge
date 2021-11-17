@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PlaceListItem: View {
-    @EnvironmentObject var place: Place
+    @StateObject var place: Place
     
     var body: some View {
-        NavigationLink(destination: PlaceDetails().environmentObject(place)) {
+        NavigationLink(destination: PlaceDetails(place: place)) {
             HStack(alignment: .top, spacing: 16){
                 Image(place.name.lowercased())
                     .resizable()

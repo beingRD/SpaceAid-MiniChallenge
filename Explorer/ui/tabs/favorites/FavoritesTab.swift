@@ -18,8 +18,7 @@ struct FavoritesTab: View {
         } else {
             List {
                 ForEach(favorites) { place in
-                    PlaceListItem()
-                        .environmentObject(place)
+                    PlaceListItem(place: place)
                 }
             }
         }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlaceDetails: View {
-    @EnvironmentObject var place: Place
+    @StateObject var place: Place
     
     var body: some View {
         ScrollView {
@@ -107,9 +107,7 @@ struct PlaceDetails: View {
             }
             .navigationTitle(place.name)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button(action: {
-                place.favorite()
-            }) {
+            .navigationBarItems(trailing: Button(action: { place.favorite() }) {
                 Image(systemName: place.isFavorite ? "heart.fill" : "heart")
             })
             .padding()

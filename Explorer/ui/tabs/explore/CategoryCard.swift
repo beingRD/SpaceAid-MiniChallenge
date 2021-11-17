@@ -25,8 +25,7 @@ struct CategoryCard: View {
         NavigationLink(destination: List {
             ForEach(places, id: \.self.id) { place in
                 if place.category == categories[index].lowercased() {
-                    PlaceListItem()
-                        .environmentObject(place)
+                    PlaceListItem(place: place)
                 }
             }
         }.navigationTitle(categories[index]).navigationBarTitleDisplayMode(.inline)) {
