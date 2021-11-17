@@ -21,6 +21,7 @@ struct AboutUsTab: View {
                 Link("Salvatore Gallo", destination: URL(string: "https://www.github.com/seldon1000")!)
                 Link("Raffaele Colantonio", destination: URL(string: "https://www.github.com/Rafas02")!)
             }
+            .listStyle(.plain)
         }
     }
 }
