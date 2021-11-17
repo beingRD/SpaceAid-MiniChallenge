@@ -1,6 +1,6 @@
 //
 //  Place.swift
-//  SpaceAidExplorer
+//  Explorer
 //
 //  Created by SpaceAid Group on 06/11/21.
 //

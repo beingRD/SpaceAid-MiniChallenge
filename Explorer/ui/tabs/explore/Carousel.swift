@@ -1,6 +1,6 @@
 //
 //  Carousel.swift
-//  SpaceAidExplorer
+//  Explorer
 //
 //  Created by SpaceAid Group on 11/11/21.
 //
