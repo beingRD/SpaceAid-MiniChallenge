@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlaceDetails: View {
     @EnvironmentObject var place: Place
-    @EnvironmentObject var places: ObservablePlaces
     
     var body: some View {
         ScrollView {

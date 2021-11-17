@@ -10,7 +10,6 @@ import SwiftUI
 struct CategoryCard: View {
     @Environment(\.isSearching) var isSearching
     @EnvironmentObject var UIState: UIStateModel
-    @EnvironmentObject var places: ObservablePlaces
     
     let index: Int
     let cardWidth: CGFloat
@@ -24,7 +23,7 @@ struct CategoryCard: View {
     
     var body: some View {
         NavigationLink(destination: List {
-            ForEach(places.places, id: \.self.id) { place in
+            ForEach(places, id: \.self.id) { place in
                 if place.category == categories[index].lowercased() {
                     PlaceListItem()
                         .environmentObject(place)
