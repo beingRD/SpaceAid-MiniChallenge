@@ -11,7 +11,6 @@ import SwiftUI
 struct SpaceAid_TestApp: App {
     @State var searchedText: String = ""
     @State var selectedTab: Int = 1
-    
     @State var favorites: [Place] = places.filter { $0.isFavorite }
     
     func getNavigationTitle() -> String {
