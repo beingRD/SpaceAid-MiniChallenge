@@ -10,22 +10,20 @@ import SwiftUI
 struct Carousel : View {
     @EnvironmentObject var UIState: UIStateModel
     
-    let numberOfItems: Int
     let spacing: CGFloat
     let widthOfHiddenCards: CGFloat
     let totalSpacing: CGFloat
     let cardWidth: CGFloat
     
-    init(numberOfItems: Int, spacing: CGFloat = 16, widthOfHiddenCards: CGFloat = 16) {
-        self.numberOfItems = numberOfItems - 1
+    init(spacing: CGFloat = 16, widthOfHiddenCards: CGFloat = 16) {
         self.spacing = spacing
         self.widthOfHiddenCards = widthOfHiddenCards
-        self.totalSpacing = CGFloat((numberOfItems)) * spacing
+        self.totalSpacing = CGFloat((categories.count)) * spacing
         self.cardWidth = UIScreen.main.bounds.width - (widthOfHiddenCards * 2) - (spacing * 2)
     }
     
     var body: some View {
-        let totalCanvasWidth: CGFloat = (cardWidth * CGFloat(numberOfItems))
+        let totalCanvasWidth: CGFloat = (cardWidth * CGFloat(categories.count - 1))
         let xOffsetToShift = (totalCanvasWidth - UIScreen.main.bounds.width) + totalSpacing
         let leftPadding = widthOfHiddenCards + spacing
         let totalMovement = cardWidth + spacing
@@ -34,7 +32,7 @@ struct Carousel : View {
         
         if (UIState.activeCard == 0) && (UIState.screenDrag > 50) {
             offset += 50
-        } else if (UIState.activeCard == numberOfItems) && (UIState.screenDrag < -50) {
+        } else if (UIState.activeCard == categories.count - 1) && (UIState.screenDrag < -50) {
             offset -= 50
         } else {
             offset += UIState.screenDrag
@@ -51,7 +49,7 @@ struct Carousel : View {
         }.onEnded { value in
             UIState.screenDrag = 0
             
-            if (value.translation.width < -(UIScreen.main.bounds.width / 3) && UIState.activeCard < numberOfItems) {
+            if (value.translation.width < -(UIScreen.main.bounds.width / 3) && UIState.activeCard < categories.count - 1) {
                 UIState.activeCard += 1
             }
             

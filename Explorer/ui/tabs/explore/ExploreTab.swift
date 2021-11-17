@@ -29,7 +29,7 @@ struct ExploreTab: View {
                 }
             }
         } else {
-            Carousel(numberOfItems: categories.count)
+            Carousel()
                 .environmentObject(UIState)
         }
     }
