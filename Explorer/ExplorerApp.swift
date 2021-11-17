@@ -1,6 +1,6 @@
 //
-//  SpaceAid_TestApp.swift
-//  SpaceAidExplorer
+//  ExplorerApp.swift
+//  Explorer
 //
 //  Created by SpaceAid Group on 06/11/21.
 //
