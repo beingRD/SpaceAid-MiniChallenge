@@ -13,7 +13,7 @@ struct PlaceDetails: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
-                Image(place.name.lowercased())
+                Image(place.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.height * 0.3)

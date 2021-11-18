@@ -12,6 +12,7 @@ class Place: ObservableObject, Identifiable {
     
     let name: String
     let description: String
+    let image: String
     let address: String
     let category: String
     let distance: String
@@ -20,9 +21,10 @@ class Place: ObservableObject, Identifiable {
     let map: String
     @Published var isFavorite: Bool
     
-    init(name: String, description: String, address: String, category: String, map: String){
+    init(name: String, description: String, image: String, address: String, category: String, map: String){
         self.name = name
         self.description = description
+        self.image = image
         self.address = address
         self.category = category
         self.distance = "3.4"

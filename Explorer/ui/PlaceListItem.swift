@@ -13,7 +13,7 @@ struct PlaceListItem: View {
     var body: some View {
         NavigationLink(destination: PlaceDetails(place: place)) {
             HStack(alignment: .top, spacing: 16){
-                Image(place.name.lowercased())
+                Image(place.image)
                     .resizable()
                     .frame(width: 96, height: 96 )
                     .cornerRadius(8)
