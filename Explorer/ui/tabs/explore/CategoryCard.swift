@@ -15,12 +15,6 @@ struct CategoryCard: View {
     let cardWidth: CGFloat
     let cardHeight: CGFloat
     
-    init(index: Int, cardWidth: CGFloat, cardHeight: CGFloat) {
-        self.index = index
-        self.cardWidth = cardWidth
-        self.cardHeight = cardHeight
-    }
-    
     var body: some View {
         NavigationLink(destination: List {
             ForEach(places, id: \.self.id) { place in

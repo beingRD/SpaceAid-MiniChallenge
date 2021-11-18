@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-class Place : ObservableObject, Identifiable {
+class Place: ObservableObject, Identifiable {
     static let userDefaults: UserDefaults = UserDefaults.standard
-    static var itemsCount = 0
     
-    let id: Int
     let name: String
     let description: String
     let address: String
@@ -23,7 +21,6 @@ class Place : ObservableObject, Identifiable {
     @Published var isFavorite: Bool
     
     init(name: String, description: String, address: String, category: String, map: String){
-        self.id = Place.itemsCount
         self.name = name
         self.description = description
         self.address = address
@@ -33,12 +30,10 @@ class Place : ObservableObject, Identifiable {
         self.transport = "line 1"
         self.map = map
         self.isFavorite = Place.userDefaults.bool(forKey: name)
-        
-        Place.itemsCount += 1
     }
     
     func favorite() {
-        if Place.userDefaults.bool(forKey: name) {
+        if isFavorite {
             Place.userDefaults.removeObject(forKey: name)
         } else {
             Place.userDefaults.set(true, forKey: name)

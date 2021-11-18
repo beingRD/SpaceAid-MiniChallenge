@@ -12,9 +12,9 @@ struct FavoritesTab: View {
     
     var body: some View {
         if favorites.isEmpty {
-            Text("Click the \(Image(systemName: "heart")) to add a place to the favorites")
+            Text("Click \(Image(systemName: "heart")) to add a place to the favorites")
                 .font(.headline)
-                .foregroundColor(.gray)
+                .foregroundColor(.gray.opacity(0.6))
         } else {
             List {
                 ForEach(favorites) { place in
