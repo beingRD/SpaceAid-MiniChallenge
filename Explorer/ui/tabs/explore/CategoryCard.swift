@@ -35,8 +35,6 @@ struct CategoryCard: View {
                     .shadow(color: .black, radius: 12)
             }
             .shadow(radius: 4)
-            .animation(.spring(), value: UIState.screenDrag)
-            .animation(.spring(), value: UIState.activeCard)
         }
     }
 }

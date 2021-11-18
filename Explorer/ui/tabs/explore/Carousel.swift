@@ -43,6 +43,7 @@ struct Carousel : View {
                 CategoryCard(index: index, cardWidth: cardWidth, cardHeight: UIScreen.main.bounds.height * 0.55)
             }
         }
+        .animation(.spring())
         .offset(x: CGFloat(offset), y: 0)
         .highPriorityGesture(DragGesture().onChanged { value in
             UIState.screenDrag = Float(value.translation.width)

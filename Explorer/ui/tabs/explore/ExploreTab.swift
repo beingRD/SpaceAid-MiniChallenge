@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-class UIStateModel: ObservableObject
-{
-    @Published var activeCard: Int = 0
-    @Published var screenDrag: Float = 0.0
-}
-
 struct ExploreTab: View {
     @Environment(\.isSearching) var isSearching
+    @EnvironmentObject var UIState: UIStateModel
     
-    var UIState: UIStateModel = UIStateModel()
     var searchedText: String
     
     var body: some View {

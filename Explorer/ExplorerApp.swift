@@ -7,11 +7,19 @@
 
 import SwiftUI
 
+class UIStateModel: ObservableObject
+{
+    @Published var activeCard: Int = 0
+    @Published var screenDrag: Float = 0.0
+}
+
 @main
 struct ExplorerApp: App {
     @State var searchedText: String = ""
     @State var selectedTab: Int = 1
     @State var favorites: [Place] = places.filter { $0.isFavorite }
+    
+    var UIState: UIStateModel = UIStateModel()
     
     func getNavigationTitle() -> String {
         switch selectedTab {
@@ -32,6 +40,7 @@ struct ExplorerApp: App {
                             Label("Explore", systemImage: "house")
                         }
                         .tag(1)
+                        .environmentObject(UIState)
                     FavoritesTab(favorites: favorites)
                         .tabItem {
                             Label("Favorites", systemImage: "heart.fill")
