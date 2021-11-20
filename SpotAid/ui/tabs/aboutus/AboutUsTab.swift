@@ -1,6 +1,6 @@
 //
 //  AboutUsTab.swift
-//  SpaceAid
+//  SpotAid
 //
 //  Created by SpaceAid Group on 15/11/21.
 //

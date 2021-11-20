@@ -1,6 +1,6 @@
 //
 //  SwiftUIView.swift
-//  SpaceAid
+//  SpotAid
 //
 //  Created by SpaceAid Group on 09/11/21.
 //
