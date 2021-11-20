@@ -1,6 +1,6 @@
 //
 //  FavoritesTab.swift
-//  Explorer
+//  SpaceAid
 //
 //  Created by SpaceAid Group on 13/11/21.
 //
