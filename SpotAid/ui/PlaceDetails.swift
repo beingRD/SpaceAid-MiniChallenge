@@ -11,6 +11,7 @@ import EventKit
 struct PlaceDetails: View {
     @StateObject var place: Place
     @State var selectedDate: Date = Date()
+    @State var isDone: Bool = false
     
     let eventStore: EKEventStore = EKEventStore()
     
@@ -46,11 +47,19 @@ struct PlaceDetails: View {
         
         event.title = "Reservation at: \(place.name)"
         event.startDate = selectedDate
-        event.endDate = selectedDate
+        event.endDate = selectedDate.addingTimeInterval(2 * 60 * 60)
         event.calendar = calendar
         
         do {
             try eventStore.save(event, span: .thisEvent, commit: true)
+            
+            withAnimation(.linear(duration: 0.25)) {
+                isDone = true
+            }
+            
+            withAnimation(.linear(duration: 0.25).delay(2)) {
+                isDone = false
+            }
         } catch {
             print("error")
         }
@@ -59,12 +68,6 @@ struct PlaceDetails: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
-                HStack {
-                    DatePicker("Ciao", selection: $selectedDate)
-                    Button(action: checkCalendarAuthorization) {
-                        Text("Save")
-                    }
-                }
                 Image(place.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -126,6 +129,22 @@ struct PlaceDetails: View {
                 .frame(width: UIScreen.main.bounds.width - 32)
                 .padding(.top, 12)
                 .padding(.bottom, 8)
+                Text("SET REMINDER")
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundColor(.black.opacity(0.6))
+                    .padding(.leading, 8)
+                    .padding(.bottom, 4)
+                HStack {
+                    DatePicker("", selection: $selectedDate, in: Date()...).labelsHidden()
+                    if isDone {
+                        Image(systemName: "checkmark.circle.fill").font(.title).foregroundColor(.green)
+                    } else {
+                        Button(action: checkCalendarAuthorization) {
+                            Text("Done")
+                        }
+                    }
+                }
+                .padding([.bottom])
                 Text("DESCRIPTION")
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.black.opacity(0.6))
