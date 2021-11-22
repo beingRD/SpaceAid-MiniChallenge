@@ -6,13 +6,62 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct PlaceDetails: View {
     @StateObject var place: Place
+    @State var selectedDate: Date = Date()
+    
+    func addNewEvent() {
+        var eventStore: EKEventStore = EKEventStore()
+        guard let calendar = eventStore.defaultCalendarForNewEvents else { return }
+        var event: EKEvent = EKEvent(eventStore: eventStore)
+        
+        event.title = "Reservation at: \(place.name)"
+        event.startDate = selectedDate
+        event.endDate = selectedDate
+        event.calendar = calendar
+        
+        switch EKEventStore.authorizationStatus(for: .event) {
+                case .authorized:
+                    print("Authorized")
+
+                case .denied:
+                    print("Access denied")
+
+                case .notDetermined:
+                    eventStore.requestAccess(to: .event, completion:
+                        {(granted: Bool, error: Error?) -> Void in
+                            if granted {
+                                print("Access granted")
+                            } else {
+                                print("Access denied")
+                            }
+                    })
+
+                    print("Not Determined")
+                default:
+                    print("Case Default")
+                }
+        
+        do {
+            try eventStore.save(event, span: .thisEvent, commit: true)
+        } catch {
+            print("error")
+        }
+        
+        
+    }
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading){
+                HStack {
+                    DatePicker("Ciao", selection: $selectedDate)
+                    Button(action: addNewEvent) {
+                        Text("Save")
+                    }
+                }
                 Image(place.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
