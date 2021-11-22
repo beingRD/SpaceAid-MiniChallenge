@@ -43,19 +43,20 @@ struct Carousel : View {
                 CategoryCard(index: index, cardWidth: cardWidth, cardHeight: UIScreen.main.bounds.height * 0.55)
             }
         }
-        .animation(.spring())
         .offset(x: CGFloat(offset), y: 0)
         .highPriorityGesture(DragGesture().onChanged { value in
             UIState.screenDrag = Float(value.translation.width)
         }.onEnded { value in
-            UIState.screenDrag = 0
-            
-            if (value.translation.width < -(UIScreen.main.bounds.width / 3) && UIState.activeCard < categories.count - 1) {
-                UIState.activeCard += 1
-            }
-            
-            if (value.translation.width > UIScreen.main.bounds.width / 3 && UIState.activeCard > 0) {
-                UIState.activeCard -= 1
+            withAnimation(.spring()) {
+                UIState.screenDrag = 0
+                
+                if (value.translation.width < -(UIScreen.main.bounds.width / 3) && UIState.activeCard < categories.count - 1) {
+                    UIState.activeCard += 1
+                }
+                
+                if (value.translation.width > UIScreen.main.bounds.width / 3 && UIState.activeCard > 0) {
+                    UIState.activeCard -= 1
+                }
             }
         })
     }

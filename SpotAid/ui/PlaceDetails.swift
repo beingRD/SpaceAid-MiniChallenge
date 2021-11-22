@@ -12,45 +12,48 @@ struct PlaceDetails: View {
     @StateObject var place: Place
     @State var selectedDate: Date = Date()
     
+    let eventStore: EKEventStore = EKEventStore()
+    
+    func checkCalendarAuthorization() {
+        switch EKEventStore.authorizationStatus(for: .event) {
+        case .authorized:
+            addNewEvent()
+            
+        case .denied:
+            print("Access denied")
+            
+        case .notDetermined:
+            eventStore.requestAccess(to: .event, completion:
+                                        {(granted: Bool, error: Error?) -> Void in
+                if granted {
+                    print("Access granted")
+                    
+                    addNewEvent()
+                } else {
+                    print("Access denied")
+                }
+            })
+            
+            print("Not Determined")
+        default:
+            print("Case Default")
+        }
+    }
+    
     func addNewEvent() {
-        var eventStore: EKEventStore = EKEventStore()
         guard let calendar = eventStore.defaultCalendarForNewEvents else { return }
-        var event: EKEvent = EKEvent(eventStore: eventStore)
+        let event: EKEvent = EKEvent(eventStore: eventStore)
         
         event.title = "Reservation at: \(place.name)"
         event.startDate = selectedDate
         event.endDate = selectedDate
         event.calendar = calendar
         
-        switch EKEventStore.authorizationStatus(for: .event) {
-                case .authorized:
-                    print("Authorized")
-
-                case .denied:
-                    print("Access denied")
-
-                case .notDetermined:
-                    eventStore.requestAccess(to: .event, completion:
-                        {(granted: Bool, error: Error?) -> Void in
-                            if granted {
-                                print("Access granted")
-                            } else {
-                                print("Access denied")
-                            }
-                    })
-
-                    print("Not Determined")
-                default:
-                    print("Case Default")
-                }
-        
         do {
             try eventStore.save(event, span: .thisEvent, commit: true)
         } catch {
             print("error")
         }
-        
-        
     }
     
     var body: some View {
@@ -58,7 +61,7 @@ struct PlaceDetails: View {
             VStack(alignment: .leading){
                 HStack {
                     DatePicker("Ciao", selection: $selectedDate)
-                    Button(action: addNewEvent) {
+                    Button(action: checkCalendarAuthorization) {
                         Text("Save")
                     }
                 }
