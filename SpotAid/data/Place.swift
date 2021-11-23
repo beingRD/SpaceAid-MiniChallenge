@@ -17,11 +17,12 @@ class Place: ObservableObject, Identifiable {
     let category: String
     let distance: String
     let rating: String
-    let transport: String
+    let transportLine: String
+    let transportStop: String
     let map: String
     @Published var isFavorite: Bool
     
-    init(name: String, description: String, image: String, address: String, category: String, map: String){
+    init(name: String, description: String, image: String, address: String, category: String, transportLine: String, transportStop: String, map: String){
         self.name = name
         self.description = description
         self.image = image
@@ -29,7 +30,8 @@ class Place: ObservableObject, Identifiable {
         self.category = category
         self.distance = "3.4"
         self.rating = "4.6"
-        self.transport = "line 1"
+        self.transportLine = transportLine
+        self.transportStop = transportStop
         self.map = map
         self.isFavorite = Place.userDefaults.bool(forKey: name)
     }

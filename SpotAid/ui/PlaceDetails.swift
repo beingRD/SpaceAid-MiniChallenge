@@ -61,9 +61,9 @@ struct PlaceDetails: View {
                     Spacer()
                     VStack{
                         VStack {
-                            Text("\(Image(systemName: "tram.fill")) Line 1")
+                            Text("\(Image(systemName: "tram.fill")) \(place.transportLine)")
                                 .font(.headline)
-                            Text("Toledo")
+                            Text(place.transportStop)
                                 .font(.system(size: 12, weight: .regular))
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
