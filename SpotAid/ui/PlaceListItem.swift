@@ -27,7 +27,7 @@ struct PlaceListItem: View {
                         .lineLimit(4)
                 }
             }
-            .padding([.top, .bottom], 8)
+            .padding(.vertical, 8)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A086B7C273FF49000578971 /* FavoritesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A086B7B273FF49000578971 /* FavoritesTab.swift */; };
+		8A3AF75E274D08C600EF177E /* NewEventSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3AF75D274D08C600EF177E /* NewEventSheet.swift */; };
 		8A4D2B10273E82D1008FB93C /* PlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4D2B0F273E82D1008FB93C /* PlaceDetails.swift */; };
 		8A7A82AE27426B11007E011D /* AboutUsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A82AD27426B11007E011D /* AboutUsTab.swift */; };
 		8AD17A8D273682FD000D2427 /* SpotAidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD17A8C273682FD000D2427 /* SpotAidApp.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		8A086B7B273FF49000578971 /* FavoritesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTab.swift; sourceTree = "<group>"; };
+		8A3AF75D274D08C600EF177E /* NewEventSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventSheet.swift; sourceTree = "<group>"; };
 		8A4D2B0F273E82D1008FB93C /* PlaceDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetails.swift; sourceTree = "<group>"; };
 		8A7A82AD27426B11007E011D /* AboutUsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsTab.swift; sourceTree = "<group>"; };
 		8AD17A89273682FD000D2427 /* SpotAid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotAid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 				8A086B78273FF45500578971 /* tabs */,
 				8A4D2B0F273E82D1008FB93C /* PlaceDetails.swift */,
 				8ADAEC12273D2B0900B0E62C /* PlaceListItem.swift */,
+				8A3AF75D274D08C600EF177E /* NewEventSheet.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				8ADAEC11273D2AB000B0E62C /* Carousel.swift in Sources */,
 				8AD17A8D273682FD000D2427 /* SpotAidApp.swift in Sources */,
 				8AD17AA227368961000D2427 /* Data.swift in Sources */,
+				8A3AF75E274D08C600EF177E /* NewEventSheet.swift in Sources */,
 				8ADAEC13273D2B0900B0E62C /* PlaceListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
