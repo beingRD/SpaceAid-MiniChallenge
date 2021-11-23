@@ -62,21 +62,20 @@ struct NewEventSheet: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 16) {
-                Spacer()
-                TextField("Event title", text: $newEventTitle, prompt: Text("Write a title for your event"))
-                    .padding()
-                    .background(Color("myGray"))
-                    .cornerRadius(8)
-                DatePicker("Choose date and time", selection: $selectedDate, in: Date()...)
-                    .datePickerStyle(.graphical)
-                    .padding(8)
-                    .background(Color("myGray"))
-                    .cornerRadius(8)
-                Spacer()
-                Spacer()
+            GeometryReader { _ in
+                VStack(spacing: 16) {
+                    TextField("Event title", text: $newEventTitle, prompt: Text("Write a title for your event"))
+                        .padding()
+                        .background(Color("myGray"))
+                        .cornerRadius(8)
+                    DatePicker("Choose date and time", selection: $selectedDate, in: Date()...)
+                        .datePickerStyle(.graphical)
+                        .padding(8)
+                        .background(Color("myGray"))
+                        .cornerRadius(8)
+                }
             }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .ignoresSafeArea(.keyboard)
             .navigationTitle("Add new event")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
