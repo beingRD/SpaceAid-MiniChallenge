@@ -22,7 +22,7 @@ struct CategoryCard: View {
         ZStack(alignment: .center) {
             Image(categories[index].lowercased())
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .scaledToFill()
                 .frame(width: cardWidth, height: index == UIState.activeCard ? cardHeight : cardHeight * 0.85)
                 .cornerRadius(16)
             Text(categories[index])

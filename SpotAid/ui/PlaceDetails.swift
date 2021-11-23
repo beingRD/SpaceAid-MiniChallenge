@@ -20,7 +20,7 @@ struct PlaceDetails: View {
             VStack(alignment: .leading) {
                 Image(place.image)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.height * 0.3)
                     .cornerRadius(16)
                     .shadow(radius: 8)
@@ -99,8 +99,8 @@ struct PlaceDetails: View {
                         .padding()
                     Image(place.map)
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.width - 52)
+                        .scaledToFill()
+                        .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.width - 32)
                         .cornerRadius(16)
                 }
                 .background(Color("myGray"))
