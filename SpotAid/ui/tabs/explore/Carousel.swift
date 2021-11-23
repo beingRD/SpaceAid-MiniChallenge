@@ -45,7 +45,9 @@ struct Carousel : View {
         }
         .offset(x: CGFloat(offset), y: 0)
         .highPriorityGesture(DragGesture().onChanged { value in
-            UIState.screenDrag = Float(value.translation.width)
+            withAnimation(.spring()) {
+                UIState.screenDrag = Float(value.translation.width)
+            }
         }.onEnded { value in
             withAnimation(.spring()) {
                 UIState.screenDrag = 0

@@ -101,21 +101,21 @@ struct PlaceDetails: View {
                     .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.width - 52)
                     .cornerRadius(16)
             }
-            .navigationTitle(place.name)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { isPresented.toggle() }) {
-                        Image(systemName: "calendar.badge.plus")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: place.favorite) {
-                        Image(systemName: place.isFavorite ? "heart.fill" : "heart")
-                    }
+            .padding()
+        }
+        .navigationTitle(place.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: { isPresented.toggle() }) {
+                    Image(systemName: "calendar.badge.plus")
                 }
             }
-            .padding()
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: place.favorite) {
+                    Image(systemName: place.isFavorite ? "heart.fill" : "heart")
+                }
+            }
         }
         .sheet(isPresented: $isPresented, onDismiss: {
             if !success {
