@@ -82,7 +82,7 @@ struct PlaceDetails: View {
                 Text("DESCRIPTION")
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.black.opacity(0.6))
-                    .padding(.leading, 8)
+                    .padding(.leading, 16)
                     .padding(.bottom, 4)
                 Text(place.description)
                     .padding()
@@ -91,15 +91,20 @@ struct PlaceDetails: View {
                 Text("ADDRESS & MAP PREVIEW")
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(.black.opacity(0.6))
-                    .padding(.leading, 8)
+                    .padding(.leading, 16)
                     .padding(.top, 16)
                     .padding(.bottom, 4)
-                Text(place.address)
-                Image(place.map)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.width - 52)
-                    .cornerRadius(16)
+                VStack(alignment: .leading) {
+                    Text(place.address)
+                        .padding()
+                    Image(place.map)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width - 32, height: UIScreen.main.bounds.width - 52)
+                        .cornerRadius(16)
+                }
+                .background(Color("myGray"))
+                .cornerRadius(16)
             }
             .padding()
         }
@@ -127,7 +132,7 @@ struct PlaceDetails: View {
         .alert(isPresented: $alerted) {
             Alert(
                 title: Text("Cannot access the calendar"),
-                message: Text("Try giving calendar permission to SpotAid inside the Settings app"),
+                message: Text("Try giving calendar permission to SpotAid inside the Settings app."),
                 dismissButton: .default(Text("Got it!"))
             )
         }
