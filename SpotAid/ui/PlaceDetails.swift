@@ -102,14 +102,18 @@ struct PlaceDetails: View {
             }
             .navigationTitle(place.name)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: HStack {
-                Button(action: { isPresented.toggle() }) {
-                    Image(systemName: "calendar.badge.plus")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { isPresented.toggle() }) {
+                        Image(systemName: "calendar.badge.plus")
+                    }
                 }
-                Button(action: place.favorite) {
-                    Image(systemName: place.isFavorite ? "heart.fill" : "heart")
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: place.favorite) {
+                        Image(systemName: place.isFavorite ? "heart.fill" : "heart")
+                    }
                 }
-            })
+            }
             .padding()
         }
         .alert("Title", isPresented: $alerted, actions: {})
