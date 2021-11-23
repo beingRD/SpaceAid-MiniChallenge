@@ -13,56 +13,56 @@ struct PlaceDetails: View {
     @State var selectedDate: Date = Date()
     @State var newEventTitle: String = ""
     @State var isPresented: Bool = false
+    @State var alerted: Bool = false
     
     let eventStore: EKEventStore = EKEventStore()
     
-    func checkCalendarAuthorization() {
+    func checkCalendarAuthorization() -> Bool {
+        var authorized: Bool = false
+        
         switch EKEventStore.authorizationStatus(for: .event) {
         case .authorized:
-            addNewEvent()
+            authorized = true
             
         case .denied:
-            print("Access denied")
+            authorized = false
             
         case .notDetermined:
-            eventStore.requestAccess(to: .event, completion:
-                                        {(granted: Bool, error: Error?) -> Void in
-                if granted {
-                    print("Access granted")
-                    
-                    addNewEvent()
-                } else {
-                    print("Access denied")
-                }
+            eventStore.requestAccess(to: .event, completion: { granted, error in
+                authorized = granted
             })
-            
-            print("Not Determined")
         default:
-            print("Case Default")
+            authorized = false
         }
+        
+        return authorized
     }
     
     func addNewEvent() {
-        guard let calendar = eventStore.defaultCalendarForNewEvents else { return }
-        let event: EKEvent = EKEvent(eventStore: eventStore)
-        
-        event.title = newEventTitle
-        event.startDate = selectedDate
-        event.endDate = selectedDate.addingTimeInterval(2 * 60 * 60)
-        event.calendar = calendar
-        
-        do {
-            try eventStore.save(event, span: .thisEvent, commit: true)
-        } catch {
-            print("error")
+        if checkCalendarAuthorization() {
+            guard let calendar = eventStore.defaultCalendarForNewEvents else { return }
+            let event: EKEvent = EKEvent(eventStore: eventStore)
+            
+            event.title = newEventTitle
+            event.startDate = selectedDate
+            event.endDate = selectedDate.addingTimeInterval(2 * 60 * 60)
+            event.calendar = calendar
+            
+            do {
+                try eventStore.save(event, span: .thisEvent, commit: true)
+            } catch {
+                print("error")
+            }
+            
+            newEventTitle = ""
+        } else {
+            alerted.toggle()
         }
-        
-        newEventTitle = ""
     }
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 Image(place.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -158,6 +158,7 @@ struct PlaceDetails: View {
             })
             .padding()
         }
+        .alert("Title", isPresented: $alerted, actions: {})
         .sheet(isPresented: $isPresented) {
             NavigationView {
                 VStack(spacing: 16) {
@@ -185,7 +186,7 @@ struct PlaceDetails: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            checkCalendarAuthorization()
+                            addNewEvent()
                             isPresented.toggle()
                         }) {
                             Text("Done")
