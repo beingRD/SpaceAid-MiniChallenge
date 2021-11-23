@@ -12,6 +12,7 @@ struct PlaceDetails: View {
     @StateObject var place: Place
     
     @State var isPresented: Bool = false
+    @State var success: Bool = true
     @State var alerted: Bool = false
     
     var body: some View {
@@ -116,9 +117,19 @@ struct PlaceDetails: View {
             }
             .padding()
         }
-        .alert("Title", isPresented: $alerted, actions: {})
-        .sheet(isPresented: $isPresented) {
-            NewEventSheet(isPresented: $isPresented, alerted: $alerted)
+        .sheet(isPresented: $isPresented, onDismiss: {
+            if !success {
+                alerted.toggle()
+            }
+        }) {
+            NewEventSheet(isPresented: $isPresented, success: $success)
+        }
+        .alert(isPresented: $alerted) {
+            Alert(
+                title: Text("Cannot access the calendar"),
+                message: Text("Try giving calendar permission to SpotAid inside the Settings app"),
+                dismissButton: .default(Text("Got it!"))
+            )
         }
     }
 }

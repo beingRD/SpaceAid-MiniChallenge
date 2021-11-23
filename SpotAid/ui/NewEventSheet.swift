@@ -10,7 +10,7 @@ import EventKit
 
 struct NewEventSheet: View {
     @Binding var isPresented: Bool
-    @Binding var alerted: Bool
+    @Binding var success: Bool
     
     @State var newEventTitle: String = ""
     @State var selectedDate: Date = Date()
@@ -39,7 +39,9 @@ struct NewEventSheet: View {
     }
     
     func addNewEvent() {
-        if checkCalendarAuthorization() {
+        success = checkCalendarAuthorization()
+        
+        if success {
             guard let calendar = eventStore.defaultCalendarForNewEvents else { return }
             let event: EKEvent = EKEvent(eventStore: eventStore)
             
@@ -51,13 +53,11 @@ struct NewEventSheet: View {
             do {
                 try eventStore.save(event, span: .thisEvent, commit: true)
             } catch {
-                print("error")
+                success = false
             }
-            
-            newEventTitle = ""
-        } else {
-            alerted.toggle()
         }
+        
+        newEventTitle = ""
     }
     
     var body: some View {
