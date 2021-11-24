@@ -46,9 +46,6 @@ struct ExplorerApp: App {
                             Label("Favorites", systemImage: "heart.fill")
                         }
                         .tag(2)
-                        .onAppear {
-                            favorites = places.filter { $0.isFavorite }
-                        }
                     AboutUsTab()
                         .tabItem {
                             Label("About Us", systemImage: "info.circle.fill")
@@ -56,6 +53,9 @@ struct ExplorerApp: App {
                         .tag(3)
                 }
                 .navigationTitle(getNavigationTitle())
+                .onAppear {
+                    favorites = places.filter { $0.isFavorite }
+                }
             }
             .preferredColorScheme(.light)
             .searchable(text: $searchedText, prompt: "Looking for something?")

@@ -12,7 +12,7 @@ struct AboutUsTab: View {
         VStack {
             Image("logo")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .scaledToFill()
                 .frame(width: 128, height: 128)
                 .padding(64)
             List {

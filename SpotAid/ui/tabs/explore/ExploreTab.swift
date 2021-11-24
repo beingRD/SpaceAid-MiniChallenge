@@ -17,7 +17,8 @@ struct ExploreTab: View {
         if isSearching {
             List {
                 ForEach(places) { place in
-                    if place.name.starts(with: searchedText) {
+                    if place.name.lowercased().starts(with: searchedText.lowercased()) ||
+                        place.name.lowercased().contains(searchedText.lowercased()) {
                         PlaceListItem(place: place)
                     }
                 }
